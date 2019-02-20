@@ -58,6 +58,7 @@ Additional Resources
 ------------------------------------------------------------------------------
 
   * `packaging projects <https://packaging.python.org/tutorials/packaging-projects>`_.
+  * `sample project on GitHub <https://github.com/pypa/sampleproject>`_.
   * `setuptools <https://setuptools.readthedocs.io/en/latest/setuptools.html>`_.
   * `pip install <https://pip.pypa.io/en/stable/reference/pip_install>`_ documentation.
   * `include additional files with distribution <https://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files>`_.
