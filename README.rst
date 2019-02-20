@@ -1,7 +1,7 @@
 znbpost
 =====================================================
 
-Custom Django storage backend.
+Django application to manage articles, pages and similar content.
 
 Features
 ------------------------------------------------------------------------------

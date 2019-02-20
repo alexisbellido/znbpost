@@ -24,8 +24,7 @@ This can be run from a host or a container. My tests have been on a container.
 
 .. code-block:: bash
 
-  $ pip install setuptools wheel
-  $ pip install twine
+  $ pip install setuptools wheel twine
 
 Run this from the same directory where setup.py is located.
 
