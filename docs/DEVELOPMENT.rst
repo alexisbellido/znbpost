@@ -1,21 +1,46 @@
 Development Notes
 ==================================================================================
 
+**Important**: Do not share this Docker image with your private key information.
+
 Using a temporary, local Docker container with an ssh private key and some Python 3 packages for initial tests.
 
-Very important: Do not share this Docker image with your private key information.
-
-Change to the directory where the Dockerfile is and build the image from there. Note the use of $(date) to use today's date as part of the image's name.
+Change to the root directory of this repository, where the Dockerfile and setup.py files are, and build the image. Optional: Use $(date) to use today's date as part of the image's name.
 
 .. code-block:: bash
 
-  $ docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)" -t alexisbellido/znbpost-$(date +%Y%m%d) .
+  $ docker build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)" -t example/znbpost-$(date +%Y%m%d) .
 
-Then run the container and make sure you don't map over the /root directory because that's where ssh key from the host is stored if you use a temporary container.
+While still in the same directory, run the container and make sure you don't map over /root in the container because that's where ssh key from the host is stored.
 
 .. code-block:: bash
 
-  $ docker run -it --rm --mount type=bind,source=$PWD,target=/root/project alexisbellido/znbpost-20190107:latest docker-entrypoint.sh /bin/bash
+  $ docker run -it --rm --mount type=bind,source=$PWD,target=/root/project example/znbpost-20190107:latest docker-entrypoint.sh /bin/bash
+
+This will map /root/project inside the container to the host directory where setup.py is, the root of the repository, and set the Python environment so that pip can do its job.
+
+List the installed packages.
+
+.. code-block:: bash
+
+  $ pip list
+
+Install into the environment's Python path.
+
+.. code-block:: bash
+
+  $ pip install /root/project/
+
+or install in editable mode so that nothing is copied and you can make changes in the source code.
+
+.. code-block:: bash
+
+  $ pip install -e /root/project/
+
+To uninstall the package.
+
+  $ pip uninstall znbpost
+
 
 Distribute as a setuptools-based Package
 ------------------------------------------------------------------------------
