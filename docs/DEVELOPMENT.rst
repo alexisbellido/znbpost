@@ -39,8 +39,9 @@ or install in editable mode so that nothing is copied and you can make changes i
 
 To uninstall the package.
 
-  $ pip uninstall znbpost
+.. code-block:: bash
 
+  $ pip uninstall znbpost
 
 Distribute as a setuptools-based Package
 ------------------------------------------------------------------------------
