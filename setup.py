@@ -31,6 +31,7 @@ setup(
     python_requires='>=3',
     install_requires=[
         'Django>=2.0',
+        'docutils>=0.14',
     ],
     author='Alexis Bellido',
     author_email='a@zinibu.com',

@@ -28,14 +28,3 @@ urlpatterns = [
 #     url(r'^(?P<slug>[-\w]+)/$', views.ArticleDetail.as_view(), name='article_detail'),
 #     url(r'^download$', views.download, name='download'), # TODO move to its own app, see views
 # ]
-
-# TODO to new-style URLConf
-# from django.urls import path
-#
-# from . import views
-#
-# app_name = 'znbpost'
-# urlpatterns = [
-#     path('', views.index, name='index'),
-#     path('<int:question_id>/', views.detail, name='detail'),
-# ]
