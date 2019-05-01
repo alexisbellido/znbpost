@@ -5,7 +5,7 @@ from . import views
 app_name = 'znbpost'
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('<int:question_id>/', views.detail, name='detail'),
+    path('<int:id>/', views.detail, name='detail'),
 ]
 
 # TODO convert old-style URLConf
