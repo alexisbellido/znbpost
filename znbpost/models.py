@@ -1,30 +1,30 @@
-# from docutils.core import publish_parts
-#
+from docutils.core import publish_parts
+
 # from django.utils.timezone import now
-# from django.db import models
+from django.db import models
 # from django.urls import reverse
 # from django.conf import settings
 # from django.utils.safestring import mark_safe
 # from django.core.cache import cache
 # from django.core.cache.utils import make_template_fragment_key
-#
-#
-# class Category(models.Model):
-#     title = models.CharField(max_length=200, db_index=True)
-#     slug = models.SlugField(unique=True, max_length=128)
-#     parent = models.ForeignKey(
-#         'self',
-#         null=True,
-#         blank=True,
-#         related_name='children',
-#         on_delete=models.CASCADE,
-#     )
-#
-#     class Meta:
-#         verbose_name_plural = 'Categories'
-#
-#     def __str__(self):
-#         return self.title;
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=200, db_index=True)
+    slug = models.SlugField(unique=True, max_length=128)
+    parent = models.ForeignKey(
+        'self',
+        null=True,
+        blank=True,
+        related_name='children',
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.title;
 #
 # class LiveArticleManager(models.Manager):
 #     """
