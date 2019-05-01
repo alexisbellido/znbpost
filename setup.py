@@ -35,7 +35,7 @@ setup(
     author='Alexis Bellido',
     author_email='a@zinibu.com',
     license='BSD, see LICENSE file',
-    description='A Django storage backend with versioning and S3 support.',
+    description='Pages and articles for Django.',
     long_description=readme,
     long_description_content_type='text/x-rst',
     url="https://github.com/alexisbellido/znbpost",
