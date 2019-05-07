@@ -4,9 +4,9 @@ from django.utils.timezone import now
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
-# from django.utils.safestring import mark_safe
-# from django.core.cache import cache
-# from django.core.cache.utils import make_template_fragment_key
+from django.utils.safestring import mark_safe
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 
 class Category(models.Model):
