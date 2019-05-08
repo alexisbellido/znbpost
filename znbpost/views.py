@@ -1,10 +1,16 @@
 from datetime import datetime
 
+from django.http import HttpResponse
 from django.shortcuts import render
+
+from .models import Article
 
 
 def index(request):
-    return render(request, 'znbpost/index.html')
+    latest_articles = Article.objects.order_by('-created')[:5]
+    output = ', '.join([article.title for article in latest_articles])
+    return HttpResponse(output)
+    # return render(request, 'znbpost/article_index.html')
 
 def article_detail(request, article_id):
     context = {
