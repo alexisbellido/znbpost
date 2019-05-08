@@ -5,16 +5,14 @@ from . import views
 app_name = 'znbpost'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:id>/', views.detail, name='detail'),
+    path('<int:article_id>/', views.article_detail, name='article_detail'),
+    # path('<int:id>/', views.detail, name='detail'),
 ]
 
 # TODO convert old-style URLConf
 # from django.conf.urls import url
-#
-# from . import views
 # from .feeds import LatestArticlesFeed
 #
-# app_name = 'znbpost'
 # urlpatterns = [
 #     url(r'^$', views.HomeList.as_view(), name='index'),
 #     url(r'^feed/$', LatestArticlesFeed(), name='feed'),

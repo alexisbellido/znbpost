@@ -6,26 +6,34 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'znbpost/index.html')
 
-
-def detail(request, id):
+def article_detail(request, article_id):
     count_articles = 15
-    now = "datetime.now: {0}".format(str(datetime.now()))
-    text = """A view from znbpost. There are {count_articles} articles""".format(
-        count_articles=count_articles
-    )
     
     context = {
-        'id': id,
-        'now': now,
-        'text': text,
-        'person': {
-            'name': 'mike',
-            'quote': 'all dogs like to play'
-        },
-        'colors': ['red', 'green', 'blue']
+        'article_id': article_id,
     }
     
-    return render(request, 'znbpost/detail.html', context)
+    return render(request, 'znbpost/article_detail.html', context)
+
+# def detail(request, id):
+#     count_articles = 15
+#     now = "datetime.now: {0}".format(str(datetime.now()))
+#     text = """A view from znbpost. There are {count_articles} articles""".format(
+#         count_articles=count_articles
+#     )
+# 
+#     context = {
+#         'id': id,
+#         'now': now,
+#         'text': text,
+#         'person': {
+#             'name': 'mike',
+#             'quote': 'all dogs like to play'
+#         },
+#         'colors': ['red', 'green', 'blue']
+#     }
+# 
+#     return render(request, 'znbpost/detail.html', context)
 
 ########################
 # import random
