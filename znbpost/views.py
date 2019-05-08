@@ -7,12 +7,9 @@ def index(request):
     return render(request, 'znbpost/index.html')
 
 def article_detail(request, article_id):
-    count_articles = 15
-    
     context = {
         'article_id': article_id,
     }
-    
     return render(request, 'znbpost/article_detail.html', context)
 
 # def detail(request, id):
