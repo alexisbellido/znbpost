@@ -93,6 +93,7 @@ class BaseContent(models.Model):
 	#import pdb; pdb.set_trace()
         if self.id:
             # Invalidate cached fragments
+            # See https://docs.djangoproject.com/en/2.2/topics/cache/#template-fragment-caching
             fragments = ['object_detail']
             if self.__class__.__name__ == 'Article':
                 fragments.extend(['object_extra', 'object_comments'])

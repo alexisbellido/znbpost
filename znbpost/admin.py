@@ -1,6 +1,11 @@
-# from django.contrib import admin
-#
-# from .models import Article, Page, Category
+from django.contrib import admin
+
+from .models import Article, Page, Category
+
+admin.site.register(Category)
+admin.site.register(Page)
+admin.site.register(Article)
+
 #
 # class CategoryInline(admin.TabularInline):
 #     model = Article.categories.through
