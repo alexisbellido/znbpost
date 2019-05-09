@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'znbpost'
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.article_index, name='article_index'),
     path('<int:article_id>/', views.article_detail, name='article_detail'),
     # path('<int:id>/', views.detail, name='detail'),
 ]
