@@ -1,8 +1,32 @@
 {% extends "znbpost/base.html" %}
 
-{% block title %}Article Detail - {{ block.super }}{% endblock %}
+{% block title %}{{ article.title }} - {{ block.super }}{% endblock %}
 
 {% block content %}
-  <h1>article_detail.html znbpost</h1>
-  <p>article_id {{ article_id }}<p>
+  <p>ID: {{ article.id }}<p>
+  <p>Title: {{ article.title }}<p>
+  
+  {% if article.categories.all %}
+    <p>Categories this article belongs to</p>
+    <ul>
+    {% for category in article.categories.all %}
+      <li>{{ category.title }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+  
+  <form action="{% url 'znbpost:article_vote' article.id %}" method="post">
+    {% csrf_token %}
+    <p>Ranking for this article</p>
+    {% for r in ranking %}
+        <input type="radio" name="ranking" id="ranking-{{ forloop.counter }}" value="{{ r }}">
+        <label for="ranking-{{ forloop.counter }}">{{ r }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+  </form>
+  
+  <p><a href="{% url 'znbpost:article_index' %}">Back home</a></p>
+  
 {% endblock content %}

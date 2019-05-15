@@ -1,0 +1,10 @@
+{% extends "znbpost/base.html" %}
+
+{% block title %}{{ article.title }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <h2>Results after voting to rank article</h2>
+  <p>ID: {{ article.id }}<p>
+  <p>Title: {{ article.title }}<p>
+  <p><a href="{% url 'znbpost:article_index' %}">Back home</a></p>
+{% endblock content %}

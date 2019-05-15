@@ -1,7 +1,9 @@
-from datetime import datetime
-
 # from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import render
+from django.urls import reverse
+from django.shortcuts import get_object_or_404
 
 from .models import Article
 
@@ -17,30 +19,39 @@ def article_index(request):
     # return HttpResponse(output)
 
 def article_detail(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    # try:
+    #     article = Article.objects.get(pk=article_id)
+    # except Article.DoesNotExist:
+    #     raise Http404("Article does not exist")
+
     context = {
-        'article_id': article_id,
+        'article': article,
+        'ranking': [2, 4, 5],
     }
     return render(request, 'znbpost/article_detail.html', context)
 
-# def detail(request, id):
-#     count_articles = 15
-#     now = "datetime.now: {0}".format(str(datetime.now()))
-#     text = """A view from znbpost. There are {count_articles} articles""".format(
-#         count_articles=count_articles
-#     )
-# 
-#     context = {
-#         'id': id,
-#         'now': now,
-#         'text': text,
-#         'person': {
-#             'name': 'mike',
-#             'quote': 'all dogs like to play'
-#         },
-#         'colors': ['red', 'green', 'blue']
-#     }
-# 
-#     return render(request, 'znbpost/detail.html', context)
+def article_vote(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    ranking = request.POST.get('ranking', None)
+    if not ranking:
+        context = {
+            'article': article,
+            'ranking': [2, 4, 5],
+            'error_message': "You didn't choose a ranking value",
+        }
+        return render(request, 'znbpost/article_detail.html', context)
+    else:
+        # do something with ranking and any other data posted from the form,
+        # then redirect to results page
+        return HttpResponseRedirect(reverse('znbpost:article_results', args=(article.id,)))        
+
+def article_results(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    return render(request, 'znbpost/article_results.html', {'article': article})
+
+# from datetime import datetime
+# now = "datetime.now: {0}".format(str(datetime.now()))
 
 ########################
 # import random
