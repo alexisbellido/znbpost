@@ -90,7 +90,7 @@ class BaseContent(models.Model):
         """
         Convert summary and body from reStructuredText to HTML.
         """
-	#import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         if self.id:
             # Invalidate cached fragments
             # See https://docs.djangoproject.com/en/2.2/topics/cache/#template-fragment-caching
@@ -100,6 +100,7 @@ class BaseContent(models.Model):
             for fragment in fragments:
                 key = make_template_fragment_key(fragment, [self.id])
                 cache.delete(key)
+        # TODO replace with auto_now attributes
         if not self.id and not self.created:
             self.created = now()
         self.modified = now()
