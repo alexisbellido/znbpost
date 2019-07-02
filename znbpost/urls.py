@@ -5,9 +5,10 @@ from . import views
 app_name = 'znbpost'
 urlpatterns = [
     path('', views.article_index, name='article_index'),
-    path('<int:article_id>/', views.article_detail, name='article_detail'),
-    path('<int:article_id>/vote/', views.article_vote, name='article_vote'),
-    path('<int:article_id>/results/', views.article_results, name='article_results'),
+    path('<slug:slug>/', views.article_detail, name='article_detail'),
+    # path('<int:article_id>/', views.article_detail, name='article_detail'),
+    path('<slug:slug>/vote/', views.article_vote, name='article_vote'),
+    path('<slug:slug>/results/', views.article_results, name='article_results'),
 ]
 
 # TODO convert old-style URLConf

@@ -131,9 +131,10 @@ class Article(BaseContent):
 	    through='CategoryToArticle',
     )
 
-    # def get_absolute_url(self):
-    #     return reverse('znbpost:article_detail', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('znbpost:article_detail', kwargs={'slug': self.slug})
 
+# TODO
 class Page(BaseContent):
     pass
 

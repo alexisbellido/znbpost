@@ -17,7 +17,7 @@
   
   {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
   
-  <form action="{% url 'znbpost:article_vote' article.id %}" method="post">
+  <form action="{% url 'znbpost:article_vote' slug=article.slug %}" method="post">
     {% csrf_token %}
     <p>Ranking for this article</p>
     {% for r in ranking %}
@@ -28,5 +28,7 @@
   </form>
   
   <p><a href="{% url 'znbpost:article_index' %}">Back home</a></p>
+  
+  <p>Permalink: {{ article.get_absolute_url }} </p>
   
 {% endblock content %}

@@ -18,8 +18,10 @@ def article_index(request):
     # output = ', '.join([article.title for article in latest_articles])
     # return HttpResponse(output)
 
-def article_detail(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
+# def article_detail(request, article_id):
+def article_detail(request, slug):
+    # article = get_object_or_404(Article, pk=article_id)
+    article = get_object_or_404(Article, slug=slug)
     # try:
     #     article = Article.objects.get(pk=article_id)
     # except Article.DoesNotExist:
@@ -31,8 +33,8 @@ def article_detail(request, article_id):
     }
     return render(request, 'znbpost/article_detail.html', context)
 
-def article_vote(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
+def article_vote(request, slug):
+    article = get_object_or_404(Article, slug=slug)
     ranking = request.POST.get('ranking', None)
     if not ranking:
         context = {
@@ -44,10 +46,11 @@ def article_vote(request, article_id):
     else:
         # do something with ranking and any other data posted from the form,
         # then redirect to results page
-        return HttpResponseRedirect(reverse('znbpost:article_results', args=(article.id,)))        
+        return HttpResponseRedirect(reverse('znbpost:article_results', kwargs={'slug': slug}))        
+        
 
-def article_results(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
+def article_results(request, slug):
+    article = get_object_or_404(Article, slug=slug)
     return render(request, 'znbpost/article_results.html', {'article': article})
 
 # from datetime import datetime
