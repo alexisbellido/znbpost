@@ -5,7 +5,7 @@
 {% block content %}
   <p>ID: {{ article.id }}<p>
   <p>Title: {{ article.title }}<p>
-  
+    
   {% if article.categories.all %}
     <p>Categories this article belongs to</p>
     <ul>
@@ -31,4 +31,8 @@
   
   <p>Permalink: {{ article.get_absolute_url }} </p>
   
+  <figure>
+    <img src="{{ article.image.url }}" alt="" title="" />
+  <figure/>
+    
 {% endblock content %}

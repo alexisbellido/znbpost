@@ -57,7 +57,7 @@ class BaseContent(models.Model):
     body_html = models.TextField(editable=False, blank=True)
 
     image = models.ImageField(
-        upload_to='img/%Y/%m/',
+        upload_to='uploads/%Y/%m/%d/',
         null=True,
         blank=True,
         height_field = 'height_field',
