@@ -1,20 +1,18 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 
 app_name = 'znbpost'
 urlpatterns = [
     path('', views.article_index, name='article_index'),
-    path('<slug:slug>/', views.article_detail, name='article_detail'),
-    # path('<int:article_id>/', views.article_detail, name='article_detail'),
-    path('<slug:slug>/vote/', views.article_vote, name='article_vote'),
-    path('<slug:slug>/results/', views.article_results, name='article_results'),
+    # path('<slug:slug>/', views.article_detail, name='article_detail'),
+    re_path(r'^articles/(?P<slug>[\w-]+)/$', views.article_detail, name='article_detail'),
+    re_path(r'^articles/(?P<slug>[\w-]+)/vote/$', views.article_vote, name='article_vote'),
+    re_path(r'^articles/(?P<slug>[\w-]+)/results/$', views.article_results, name='article_results'),
+    re_path(r'^p/(?P<slug>[\w-]+)/$', views.page_detail, name='page_detail'),
 ]
 
 # TODO convert old-style URLConf
-# from django.conf.urls import url
-# from .feeds import LatestArticlesFeed
-#
 # urlpatterns = [
 #     url(r'^$', views.HomeList.as_view(), name='index'),
 #     url(r'^feed/$', LatestArticlesFeed(), name='feed'),

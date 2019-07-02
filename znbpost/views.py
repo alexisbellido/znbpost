@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 
-from .models import Article
+from .models import Article, Page
 
 
 def article_index(request):
@@ -14,13 +14,8 @@ def article_index(request):
         'latest_articles': latest_articles,
     }
     return render(request, 'znbpost/article_index.html', context)
-    
-    # output = ', '.join([article.title for article in latest_articles])
-    # return HttpResponse(output)
 
-# def article_detail(request, article_id):
 def article_detail(request, slug):
-    # article = get_object_or_404(Article, pk=article_id)
     article = get_object_or_404(Article, slug=slug)
     # try:
     #     article = Article.objects.get(pk=article_id)
@@ -52,6 +47,15 @@ def article_vote(request, slug):
 def article_results(request, slug):
     article = get_object_or_404(Article, slug=slug)
     return render(request, 'znbpost/article_results.html', {'article': article})
+
+def page_detail(request, slug):
+    page = get_object_or_404(Page, slug=slug)
+
+    context = {
+        'page': page,
+    }
+    return render(request, 'znbpost/page_detail.html', context)
+
 
 # from datetime import datetime
 # now = "datetime.now: {0}".format(str(datetime.now()))

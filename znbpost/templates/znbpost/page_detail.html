@@ -1,0 +1,22 @@
+{% extends "znbpost/base.html" %}
+
+{% block title %}{{ page.title }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <p>ID: {{ page.id }}<p>
+  <p>Title: {{ page.title }}<p>
+  
+  {% if page.categories.all %}
+    <p>Categories this page belongs to</p>
+    <ul>
+    {% for category in page.categories.all %}
+      <li>{{ category.title }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  
+  <p><a href="{% url 'znbpost:article_index' %}">Back home</a></p>
+  
+  <p>Permalink: {{ page.get_absolute_url }} </p>
+  
+{% endblock content %}
